@@ -1,0 +1,8 @@
+Kitap Envanter uygulaması
+
+KİTAP
+    - POST   /books      - Kitap oluşturma
+    - PUT    /books/{id} - Kitap güncelleme
+    - DELETE /books/{id} - Kitap silme
+    - GET    /books{id}  - Bir kitabın bilgilerini görme
+    - GET    /books      - Kitapları listeleme
