@@ -1,14 +1,13 @@
-# Use an official Java runtime as a parent image
+# Stage 1: Build the application
+FROM maven:3.9-eclipse-temurin-21 AS build
+WORKDIR /build
+COPY pom.xml .
+COPY src ./src
+RUN mvn verify -DskipTests=true
+
+# Stage 2: Run the application
 FROM amazoncorretto:21.0.4-alpine3.18
-
-# Set the working directory in the container
 WORKDIR /app
-
-# Copy the JAR file into the container
-COPY ./target/*.jar app.jar
-
-# Expose the port that the application will run on
+COPY --from=build /build/target/*.jar app.jar
 EXPOSE 8080
-
-# Run the JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -1,30 +1,29 @@
 version: '3.8'
 
 services:
-  app:
-    image: 'docker-spring-boot-postgres:latest'
-    build:
-      context: .
-    container_name: app
+  bookinventory-app:
+    build: .
+    ports:
+      - "9000:8080"
     depends_on:
-      - db
+      - bookinventory-postgres
     environment:
-      - POSTGRES_USER=$YOUR_USERNAME
-      - POSTGRES_PASSWORD=$YOUR_PASSWORD
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/$YOUR_DB_NAME
-      - SPRING_DATASOURCE_USERNAME=$YOUR_USERNAME
-      - SPRING_DATASOURCE_PASSWORD=$YOUR_PASSWORD
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://bookinventory-postgres:5432/bookinventory
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
 
+  bookinventory-postgres:
+    image: postgres:15
     ports:
-      - "$LOCAL_PORT:$DOCKER_PORT"
-
-  db:
-    image: postgres
-    container_name: db
+      - "5432:5432"
     environment:
-      - POSTGRES_USER=$YOUR_USERNAME
-      - POSTGRES_PASSWORD=$YOUR_PASSWORD
-      - POSTGRES_DB=$YOUR_DB_NAME
-    ports:
-      - "$LOCAL_PORT:$DOCKER_PORT"
+      - POSTGRES_DB=bookinventory
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
