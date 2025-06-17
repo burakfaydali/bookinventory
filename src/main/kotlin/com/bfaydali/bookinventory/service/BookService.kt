@@ -1,8 +1,9 @@
 package com.bfaydali.bookinventory.service
 
 import com.bfaydali.bookinventory.model.entity.Book
-import com.bfaydali.bookinventory.model.request.BookCreateRequest
-import com.bfaydali.bookinventory.model.request.BookUpdateRequest
+import com.bfaydali.bookinventory.model.errors.DomainNotFoundException
+import com.bfaydali.bookinventory.model.request.book.BookCreateRequest
+import com.bfaydali.bookinventory.model.request.book.BookUpdateRequest
 import com.bfaydali.bookinventory.model.response.BookResponse
 import com.bfaydali.bookinventory.repository.BookRepository
 import org.springframework.stereotype.Service
@@ -36,5 +37,5 @@ class BookService(
 
     private fun findBook(id: Long) = bookRepository
         .findById(id)
-        .orElseThrow { RuntimeException() }
+        .orElseThrow { DomainNotFoundException("book.not.found") }
 }

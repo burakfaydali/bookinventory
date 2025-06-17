@@ -1,4 +1,4 @@
-package com.bfaydali.bookinventory.controller
+package com.bfaydali.bookinventory.controller.utility
 
 import io.swagger.v3.oas.annotations.Hidden
 import org.springframework.web.bind.annotation.GetMapping

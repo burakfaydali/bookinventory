@@ -1,4 +1,4 @@
-package com.bfaydali.bookinventory.model.request
+package com.bfaydali.bookinventory.model.request.author
 
 data class AuthorCreateRequest(
     val name: String,

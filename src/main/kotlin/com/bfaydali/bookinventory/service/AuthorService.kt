@@ -1,8 +1,8 @@
 package com.bfaydali.bookinventory.service
 
 import com.bfaydali.bookinventory.model.entity.Author
-import com.bfaydali.bookinventory.model.request.AuthorCreateRequest
-import com.bfaydali.bookinventory.model.request.AuthorUpdateRequest
+import com.bfaydali.bookinventory.model.request.author.AuthorCreateRequest
+import com.bfaydali.bookinventory.model.request.author.AuthorUpdateRequest
 import com.bfaydali.bookinventory.model.response.AuthorResponse
 import com.bfaydali.bookinventory.repository.AuthorRepository
 import org.springframework.stereotype.Service

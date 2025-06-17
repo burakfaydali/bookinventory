@@ -1,7 +1,7 @@
 package com.bfaydali.bookinventory.controller
 
-import com.bfaydali.bookinventory.model.request.AuthorCreateRequest
-import com.bfaydali.bookinventory.model.request.AuthorUpdateRequest
+import com.bfaydali.bookinventory.model.request.author.AuthorCreateRequest
+import com.bfaydali.bookinventory.model.request.author.AuthorUpdateRequest
 import com.bfaydali.bookinventory.model.response.AuthorResponse
 import com.bfaydali.bookinventory.service.AuthorService
 import org.springframework.web.bind.annotation.*

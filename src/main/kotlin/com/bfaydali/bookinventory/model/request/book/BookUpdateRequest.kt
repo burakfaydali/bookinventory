@@ -1,4 +1,4 @@
-package com.bfaydali.bookinventory.model.request
+package com.bfaydali.bookinventory.model.request.book
 
 import com.bfaydali.bookinventory.model.enums.BookCategory
 
