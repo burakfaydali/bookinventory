@@ -6,8 +6,8 @@ import org.springframework.boot.runApplication
 
 @OpenAPIDefinition
 @SpringBootApplication
-class BookinventoryApplication
+class Application
 
 fun main(args: Array<String>) {
-	runApplication<BookinventoryApplication>(*args)
+	runApplication<Application>(*args)
 }

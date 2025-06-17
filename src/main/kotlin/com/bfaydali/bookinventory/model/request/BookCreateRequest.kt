@@ -1,16 +1,20 @@
 package com.bfaydali.bookinventory.model.request
 
+import com.bfaydali.bookinventory.model.entity.Author
 import com.bfaydali.bookinventory.model.entity.Book
+import com.bfaydali.bookinventory.model.enums.BookCategory
 
 data class BookCreateRequest(
     var name: String,
-    var author: String,
+    var authorId: Long,
     var pageCount: Int,
+    var categories: Set<BookCategory>
 ) {
 
-    fun toBook() = Book(
+    fun toBook(author: Author) = Book(
         name,
         author,
         pageCount,
+        categories
     )
 }

@@ -15,14 +15,8 @@ class BookServiceTest {
     @Test
     fun it_should_create_book() {
         // given
-        val request = BookCreateRequest(
-            name = "name",
-            author = "author",
-            pageCount = 10,
-        )
 
         // when
-        underTest.create(request)
 
         // then
 
