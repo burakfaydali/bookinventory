@@ -4,6 +4,8 @@ import com.bfaydali.bookinventory.model.request.author.AuthorCreateRequest
 import com.bfaydali.bookinventory.model.request.author.AuthorUpdateRequest
 import com.bfaydali.bookinventory.model.response.AuthorResponse
 import com.bfaydali.bookinventory.service.AuthorService
+import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -13,10 +15,12 @@ class AuthorController(
 ) {
 
     @PostMapping
-    fun create(@RequestBody request: AuthorCreateRequest): AuthorResponse = authorService.create(request)
+    @ResponseStatus(HttpStatus.CREATED)
+    fun create(@Valid @RequestBody request: AuthorCreateRequest): AuthorResponse = authorService.create(request)
 
     @PutMapping("/{id}")
-    fun update(@PathVariable id: Long, @RequestBody request: AuthorUpdateRequest): AuthorResponse = authorService.update(id, request)
+    fun update(@PathVariable id: Long, @Valid @RequestBody request: AuthorUpdateRequest): AuthorResponse =
+        authorService.update(id, request)
 
     @GetMapping
     fun getAll(): List<AuthorResponse> = authorService.getAll()
