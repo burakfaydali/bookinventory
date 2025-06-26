@@ -1,7 +1,7 @@
 package com.bfaydali.bookinventory.service
 
 import com.bfaydali.bookinventory.model.entity.Book
-import com.bfaydali.bookinventory.model.errors.DomainNotFoundException
+import com.bfaydali.bookinventory.model.exception.DomainNotFoundException
 import com.bfaydali.bookinventory.model.request.book.BookCreateRequest
 import com.bfaydali.bookinventory.model.request.book.BookUpdateRequest
 import com.bfaydali.bookinventory.model.response.BookResponse
@@ -37,5 +37,5 @@ class BookService(
 
     private fun findBook(id: Long) = bookRepository
         .findById(id)
-        .orElseThrow { DomainNotFoundException("book.not.found") }
+        .orElseThrow { DomainNotFoundException("book.not.found", id.toString()) }
 }
