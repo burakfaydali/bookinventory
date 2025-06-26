@@ -31,7 +31,8 @@ fun IllegalArgumentException.toResponse(messageSource: MessageSource) = anErrorR
 fun MissingServletRequestParameterException.toResponse(messageSource: MessageSource) = anErrorResponse(
     messageSource,
     "MissingServletRequestParameterException",
-    MISSING_REQUEST_PARAM_ERROR_KEY
+    MISSING_REQUEST_PARAM_ERROR_KEY,
+    arrayOf(parameterName)
 )
 
 fun InvalidFormatException.toResponse(messageSource: MessageSource) = anErrorResponse(
@@ -56,6 +57,7 @@ fun anErrorResponse(
     messageSource: MessageSource,
     exceptionType: String,
     key: String,
+    args: Array<String> = emptyArray()
 ) = ErrorResponse(
     exception = exceptionType,
     errors = listOf(
@@ -63,9 +65,9 @@ fun anErrorResponse(
             key = key,
             message = messageSource.getMessage(
                 key,
-                emptyArray(),
+                args,
                 LocaleContextHolder.getLocale()
-            )
+            ),
         )
     )
 )
