@@ -2,6 +2,7 @@ package com.bfaydali.bookinventory.model.entity;
 
 import com.bfaydali.bookinventory.model.response.AuthorResponse;
 import jakarta.persistence.*;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -61,4 +62,14 @@ public class Author {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-} 
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("surname", surname)
+                .append("books", books)
+                .toString();
+    }
+}

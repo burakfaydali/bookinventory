@@ -22,6 +22,7 @@
 		<springdoc.openapi.starter.webmvc.ui.version>2.8.9</springdoc.openapi.starter.webmvc.ui.version>
 
 		<springmockk.version>4.0.2</springmockk.version>
+		<h2.version>1.4.200</h2.version>
 	</properties>
 
 	<dependencies>
@@ -72,6 +73,12 @@
 			<groupId>com.ninja-squad</groupId>
 			<artifactId>springmockk</artifactId>
 			<version>${springmockk.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

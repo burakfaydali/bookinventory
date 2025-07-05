@@ -23,6 +23,7 @@ fun getAuthor() = Author().apply {
     id = 1
     name = "name"
     surname = "surname"
+    books = mutableListOf()
 }
 
 fun getAuthorFilterRequest() = AuthorFilterRequest(
@@ -34,6 +35,8 @@ fun getAuthorFilterRequest() = AuthorFilterRequest(
 fun getPageRequest() = PageRequest.of(0, 10)
 
 fun <T> getPage(content: T) = PageImpl(listOf(content), getPageRequest(), 1)
+
+fun getEmptyPage() = PageImpl<Any>(listOf(), getPageRequest(), 1)
 
 fun <T> getPageableResponse(content: T) = PageableResponse(
     totalElements = 1,

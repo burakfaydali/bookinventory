@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: unit-test
+  application:
+    name: bookinventory
+  datasource:
+    name: ~
+    username: ~
+    password: ~
+    url: "jdbc:h2:mem:spag;DB_CLOSE_DELAY=-1;DB_CLOSE_ONE_EXIT=false;MODE=POSTGRESQL"
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    database: H2
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
