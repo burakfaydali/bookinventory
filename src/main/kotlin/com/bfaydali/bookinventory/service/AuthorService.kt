@@ -1,9 +1,12 @@
 package com.bfaydali.bookinventory.service
 
+import com.bfaydali.bookinventory.extension.toPageableResponse
 import com.bfaydali.bookinventory.model.entity.Author
+import com.bfaydali.bookinventory.model.request.AuthorFilterRequest
 import com.bfaydali.bookinventory.model.request.author.AuthorCreateRequest
 import com.bfaydali.bookinventory.model.request.author.AuthorUpdateRequest
 import com.bfaydali.bookinventory.model.response.AuthorResponse
+import com.bfaydali.bookinventory.model.response.PageableResponse
 import com.bfaydali.bookinventory.repository.AuthorRepository
 import org.springframework.stereotype.Service
 
@@ -28,7 +31,13 @@ class AuthorService(
         return authorRepository.save(author).toResponse()
     }
 
-    fun getAll(): List<AuthorResponse> = authorRepository.findAll().map { it.toResponse() }
+    fun getAll(request: AuthorFilterRequest): PageableResponse<AuthorResponse> =
+        when (request.name == null) {
+            true -> authorRepository.findAll(request.pageRequest())
+            else -> authorRepository.findAllByNameContainsIgnoreCase(request.name!!, request.pageRequest())
+        }
+            .map { it.toResponse() }
+            .toPageableResponse()
 
     fun get(id: Long): AuthorResponse = findAuthor(id).toResponse()
 
